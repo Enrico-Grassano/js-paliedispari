@@ -1,22 +1,39 @@
-//L'utente sceglie pari o dispari e inserisce un numero da 1 a 5.
-var numeroUtente = parseInt(prompt("Scegli un numero da 1 a 5"));
-console.log("Hai scelto il numero:", numeroUtente);
+//Functions
+function oddOrEven (num) {
+    if (nume % 2 == 0) {
+        return "pari";
+    } else {
+        return "dispari";
+    }
+}
+function isEven (num) {
+    return num % 2 == 0;
+}
+function getRandomNumber (min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
-if (numeroUtente % 2) {
-    console.log("Hai scelto un numero dispari")
-} else {
-    console.log("Hai scelto un numero pari");
-}
-//Generiamo un numero random (sempre da 1 a 5) per il computer (usando una funzione).
-var numeroPc = Math.floor(Math.random() * 5) + 1;    
-console.log("Il pc ha scelto il numero:", numeroPc);
+
+//L'utente sceglie pari o dispari e inserisce un numero da 1 a 5.
+var scelta = "";
+do {
+    scelta = prompt("Pari o dispari?");
+} while (scelta ! = "pari" && scelta ! = "dispari");
+console.log("Scelta:", scelta);
+var numeroUtente = parseInt(prompt("Scegli un numero compreso tra 1 e 5."));
+console.log("Numero Utente:", numeroUtente);
+//Generiamo un numero random (sempre da 1 a 5) per il computer (usando una funzione)
+var numeroPC = getRandomNumber(1, 5);
+console.log("Numero PC:", numeroPC);
 //Sommiamo i due numeri.
-var somma = numeroUtente + numeroPc;
-console.log("La somma tra i due numeri è:", somma);
+var somma = numeroPC + numeroUtente;
+console.log("Somma:", somma);
 //Stabiliamo se la somma dei due numeri è pari o dispari (usando una funzione).
-if (somma % 2) {
-    console.log("La somma è: dispari");
-} else {
-    console.log("La somma è: pari");
-}
+var controllo = OddOrEven(somma);
+console.log("Controllo:", controllo);
 //Dichiariamo chi ha vinto.
+if (scelta == controllo) {
+    console.log("Utente vince.");
+} else {
+    console.log("PC vince.");
+}
